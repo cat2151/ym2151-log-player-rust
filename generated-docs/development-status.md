@@ -1,51 +1,51 @@
-Last updated: 2025-11-11
+Last updated: 2025-11-12
 
 # Development Status
 
 ## 現在のIssues
-- [Issue #74](../issue-notes/74.md) は、Rust版ym2151-log-playerの動作安定化と、C言語版より改善された音質（特に音源末尾の処理）が達成されたことを報告しています。
-- この安定した状態を基に、今後はプロジェクト全体のドキュメント整備とリポジトリのクリーンアップを進めることが主要なタスクとなります。
-- これらの作業を通じて、将来的な開発におけるAIのハルシネーション発生確率を低減し、より信頼性の高い開発プロセスを目指します。
+- 現在のプロジェクトは安定しており、C言語版と比較して音質（特に末尾処理）が向上しました [Issue #74](../issue-notes/74.md)。
+- 今後の目標は、生成されるドキュメントの品質を向上させ、リポジトリを整理することです [Issue #74](../issue-notes/74.md)。
+- これにより、ハルシネーションの発生確率を低減し、より信頼性の高い自動化を目指します [Issue #74](../issue-notes/74.md)。
 
 ## 次の一手候補
-1. Rust版の安定性向上とC言語版との比較を反映した `README.md` および `README.ja.md` の更新 [Issue #74](../issue-notes/74.md)
-   - 最初の小さな一歩: `README.md` を開き、Rust版がC言語版と同等かそれ以上に安定動作し、音質（特に末尾処理）が改善された点を追記する。
+1. 主要ドキュメントの最新化と精査 [Issue #74](../issue-notes/74.md)
+   - 最初の小さな一歩: `README.md` と `README.ja.md` が現状のプロジェクト状況（特に音質改善と安定性）を正確に反映しているか確認し、必要に応じて更新する。
    - Agent実行プロンプト:
      ```
      対象ファイル: README.md, README.ja.md
 
-     実行内容: Rust版 `ym2151-log-player` がC言語版と同等以上に安定動作し、特に音源の末尾処理における音質が改善された点を明記するように、`README.md` を更新してください。更新後、`README.md` の内容を元に `README.ja.md` を翻訳・更新してください。
+     実行内容: 対象ファイルが、プロジェクトの現在の安定性、C言語版からの音質改善（特に末尾処理）、および主要な機能（例: `.github/workflows` 関連の自動化）を正確かつ魅力的に記述しているか分析し、必要に応じて修正案を提示してください。
 
-     確認事項: 現在の `README.md` の内容が最新のプロジェクト状況を反映しているか確認し、Rust版の優位性を強調する適切な表現を選定してください。ユーザーがRust版への移行を検討しやすい情報を含めることを意識してください。
+     確認事項: 最新のコミット履歴（特に `6f5d285 Revise README for stability and library usage`）を確認し、既に反映されている変更と重複しないように注意してください。また、`README.ja.md` が `README.md` の内容を適切に翻訳していることを確認してください。
 
-     期待する出力: 更新された `README.md` と `README.ja.md` の内容をMarkdown形式で出力してください。
+     期待する出力: `README.md` と `README.ja.md` の修正案をMarkdown形式で出力してください。変更点が明確になるように、差分形式（Unified Diff Format）で記述することも考慮してください。
      ```
 
-2. 共通ワークフロー導入に伴い不要となった `.github/actions-tmp/` ディレクトリのクリーンアップ [Issue #74](../issue-notes/74.md)
-   - 最初の小さな一歩: `.github/actions-tmp/` ディレクトリの内容を確認し、コミット `e327eaa` で導入された共通ワークフローに関連するファイル（例: `daily-project-summary.yml` の関連ファイル群）がすでにメインの `.github/workflows/` ディレクトリに移行され、残骸となっていないか調査する。
+2. 不要な開発関連ファイルの整理 [Issue #74](../issue-notes/74.md)
+   - 最初の小さな一歩: プロジェクトルート直下にあるテストデータや一時的な生成物（`output_ym2151.json`, `sample_events.json`, `test_input.json`, `_codeql_detected_source_root` など）を洗い出し、`.gitignore` に追加するか、専用のディレクトリに移動する。
    - Agent実行プロンプト:
      ```
-     対象ファイル: .github/actions-tmp/, .github/workflows/
+     対象ファイル: .gitignore, output_ym2151.json, sample_events.json, test_input.json, _codeql_detected_source_root
 
-     実行内容: コミット `e327eaa` で導入された共通ワークフロー（`daily-project-summary.yml`, `call-daily-project-summary.yml`, `issue-note.yml`, `call-issue-note.yml`, `translate-readme.yml`, `call-translate-readme.yml` など）が、すでに `.github/workflows/` ディレクトリに適切に配置され機能していることを確認してください。その上で、これらの共通ワークフローの導入に伴い、一時的に `.github/actions-tmp/` にコピーされたが現在は不要となっているファイルやディレクトリを特定してください。
+     実行内容: プロジェクトルートにある上記ファイルがバージョン管理に含めるべきでない一時ファイルやテスト生成物であるかを判断し、もしそうであれば `.gitignore` に追記する変更を提案してください。また、`_codeql_detected_source_root` についてはその用途を調査し、必要であれば削除または移動の提案を行ってください。
 
-     確認事項: 削除対象として特定されたファイルが、現在のプロジェクトの機能に影響を与えないことを慎重に確認してください。特に、`.github/actions-tmp/` 内にあるが、まだ本流のワークフローに移行されていないスクリプトや設定ファイルがないか注意深く調査してください。
+     確認事項: これらのファイルがプロジェクトのビルドやテストプロセスに不可欠でないことを確認してください。特に、`output_ym2151.json` などの出力ファイルは、今後のテストで生成される可能性を考慮し、適切に無視されるようにしてください。
 
-     期待する出力: 削除すべきファイルやディレクトリのリストと、その削除理由をMarkdown形式で出力してください。
+     期待する出力: `.gitignore` の変更案と、その他のファイルの削除または移動に関する具体的な提案をMarkdown形式で出力してください。
      ```
 
-3. Copilot Instructionsの更新と開発状況生成プロンプトの改善によるハルシネーションリスク低減 [Issue #74](../issue-notes/74.md)
-   - 最初の小さな一歩: `.github/copilot-instructions.md` を開き、現在のプロジェクトの状態や、Agentに期待する振る舞い（特にハルシネーションを避けるための明確な指示）を追加・更新する。
+3. 開発状況生成プロンプトとスクリプトの整合性向上 [Issue #74](../issue-notes/74.md)
+   - 最初の小さな一歩: `.github/actions-tmp/.github_automation/project_summary/prompts/development-status-prompt.md` が、現在の「開発状況生成プロンプト」のガイドラインと整合しているか確認し、不整合があれば修正案を検討する。
    - Agent実行プロンプト:
      ```
-     対象ファイル: .github/copilot-instructions.md, .github/actions-tmp/.github_automation/project_summary/prompts/development-status-prompt.md
+     対象ファイル: .github/actions-tmp/.github_automation/project_summary/prompts/development-status-prompt.md, .github/actions-tmp/.github_automation/project_summary/scripts/development/DevelopmentStatusGenerator.cjs, .github/actions-tmp/.github_automation/project_summary/scripts/development/IssueTracker.cjs
 
-     実行内容: [Issue #4](../issue-notes/4.md) で報告されているAgentのハルシネーション経験と、現在のプロジェクトがRust版の安定化を達成した状況を踏まえ、`.github/copilot-instructions.md` を更新してください。特に、LLMがプロジェクトの現状を正確に把握し、無用なタスクや誤った情報を生成しないよう、具体的な指示を追加してください。また、`development-status-prompt.md` がハルシネーションを誘発する可能性のある記述を含んでいないかレビューし、必要であれば修正案を提案してください。
+     実行内容: 現在の「開発状況生成プロンプト」（本ファイルの内容）と、実際に開発状況を生成するスクリプトが、Issue情報の収集、要約、次のステップの提案に関して、想定通りの挙動を促すように設計されているか分析してください。特に、ハルシネーションを防ぐためのガイドラインがスクリプトの実装と一致しているかを確認し、不整合があれば、`.github/actions-tmp/.github_automation/project_summary/prompts/development-status-prompt.md` の改善案を提案してください。
 
-     確認事項: 更新内容が既存のCopilot Instructionsと矛盾しないか、またAgentの挙動を適切に導くものであるかを検証してください。ハルシネーションの具体的な事例を回避するための明確なルールや制約が盛り込まれているか確認してください。
+     確認事項: `IssueTracker.cjs` がどのようにIssue情報を取得し、`DevelopmentStatusGenerator.cjs` がどのようにそれを処理しているか、そして最終的に `.github/actions-tmp/.github_automation/project_summary/prompts/development-status-prompt.md` をどのように利用しているかを理解した上で分析を行ってください。
 
-     期待する出力: 更新された `.github/copilot-instructions.md` の内容と、`development-status-prompt.md` のレビュー結果および提案される修正案をMarkdown形式で出力してください。
+     期待する出力: `.github/actions-tmp/.github_automation/project_summary/prompts/development-status-prompt.md` の改善案をMarkdown形式で出力してください。特に、ハルシネーションを抑制し、より精度の高い出力を導くための具体的な指示や制約の追加・修正に焦点を当ててください。
      ```
 
 ---
-Generated at: 2025-11-11 09:30:49 JST
+Generated at: 2025-11-12 07:06:29 JST

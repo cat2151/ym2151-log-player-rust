@@ -1,4 +1,4 @@
-Last updated: 2025-11-11
+Last updated: 2025-11-12
 
 
 # プロジェクト概要生成プロンプト（来訪者向け）
@@ -1959,4 +1959,4 @@ output_ym2151.json
 
 
 ---
-Generated at: 2025-11-11 09:30:25 JST
+Generated at: 2025-11-12 07:06:08 JST

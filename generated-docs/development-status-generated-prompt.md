@@ -1,4 +1,4 @@
-Last updated: 2025-11-11
+Last updated: 2025-11-12
 
 # 開発状況生成プロンプト（開発者向け）
 
@@ -391,6 +391,7 @@ jobs:
 
 ## 最近の変更（過去7日間）
 ### コミット履歴:
+ae969cb Update project summaries (overview & development status) [auto]
 6f5d285 Revise README for stability and library usage
 8d91248 Merge branch 'main' of github.com:cat2151/ym2151-log-player-rust into main
 ac51ed9 test data
@@ -399,18 +400,20 @@ a3832fd jekyll settings
 47cc7c7 ツール失敗でコメントが消えてしまっていたので、公式から取り込み直し
 
 ### 変更されたファイル:
-.editorconfig
 .github/workflows/call-daily-project-summary.yml
 .github/workflows/call-issue-note.yml
 .github/workflows/call-translate-readme.yml
 Cargo.toml
-README.ja.md
 README.md
 _config.yml
+generated-docs/development-status-generated-prompt.md
+generated-docs/development-status.md
+generated-docs/project-overview-generated-prompt.md
+generated-docs/project-overview.md
 opm.c
 opm.h
 output_ym2151.json
 
 
 ---
-Generated at: 2025-11-11 09:30:25 JST
+Generated at: 2025-11-12 07:06:09 JST
